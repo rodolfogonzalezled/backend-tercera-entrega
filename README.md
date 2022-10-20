@@ -12,23 +12,25 @@
 
 - El servidor trabajará con una base de datos DBaaS y estará preparado para trabajar en forma local o en la nube a través de la plataforma PaaS Heroku.
 
-# Para su prueba:
-1.	Clonar el repositorio ( git clone https://github.com/  )
+
+# Para su prueba en el navegador:
+```
+https://ecommerce-tercera-entrega-rodo.herokuapp.com/login
+```
+
+
+# Para su prueba local:
+1.	Clonar el repositorio ( git clone https://github.com/rodolfogonzalezled/backend-tercera-entrega.git)
 2.	Obtener node_modules ( npm install )
     - Se instala los modulos via npm:
         - npm init - y
 3.	Iniciar la app desde la terminal en la carpeta del proyecto a revisar. ( npm start )
 4.	El proyecto se ejecutará en el navegador en ( http://localhost:9090 )  
 
+
 # Vistas:
-- Pagina principal de Login para introducir en un formulario de ingreso un correo y contraseña que permite acceder a las rutas.
+- Pagina principal de Login o registro en caso de no estar registrado.
 - Boton de deslogueo para cerrar la sesion activa.
 - Cierre de sesion automatico por tiempo de inactividad, lo cual pedira iniciar sesion nuevamente.
 
-
 ##### Proyecto en desarrollo ######
-
-```
-http://
-```
-

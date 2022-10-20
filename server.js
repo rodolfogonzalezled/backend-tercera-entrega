@@ -8,6 +8,7 @@ import cartsRoutes from './src/routes/cart.routes.js';
 import sessionRoutes from './src/routes/session.routes.js';
 import passport from 'passport';
 import initializePassport from './src/Config/passport.config.js';
+import __dirname from './dirname.js'
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));               // con http://localhost:9090/
-app.set("views", "./public/views");
+app.set("views",  __dirname + "/public/views");
 app.set("view engine", "ejs");
 
 // --- Conexión del Servidor ------------------------------------------------------------

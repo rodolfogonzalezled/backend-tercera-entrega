@@ -1,5 +1,6 @@
 import passport from 'passport';
 import local from 'passport-local';
+import __dirname from '../../dirname.js';
 import { carts } from '../DAOs/index.js';
 import { userModel } from '../models/userSchema.js';
 import { createHash, isValidPassword } from "../utils/utils.js";
@@ -27,7 +28,7 @@ const initializePassport = () => {
                 phone,
                 role: "user",
                 cart: idCart,
-                photo: req.file.path
+                photo: __dirname + '/' + req.file.path
             })
             return done(null, user);
         } catch (error) {
