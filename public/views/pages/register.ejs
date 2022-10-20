@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games RODO</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header.ejs') %>
+    </header>
+
+    <main>
+        <div class="jumbotron py-3" id="agregar">
+            <h1 class="pb-4 text-center">Registro de usuario</h1>
+            <div class="container" style="    width: 50%;
+            background: #ffffffbf;
+            border-radius: 2%;
+            padding: 1em;">
+                <form class="form" name="registerForm" id="registerForm" enctype="multipart/form-data">
+                    <div class="row justify-content-around">
+                        <div class="row ">
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Correo:</label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Contraseña:</label>
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Dirección:</label>
+                                <input type="text" class="form-control" name="address" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Edad:</label>
+                                <input type="number" class="form-control" name="age" required>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <label class="form-label">Teléfono:</label>
+                                <input type="tel" id="phone" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="form-label">Foto:</label>
+                            <input class="btn " type="file" id="imageProfile" />
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a type="submit" class="btn btn-secondary" onclick="register(event)">Registrar</a>
+                        <a type="button" class="btn btn-secondary" href='/login'>Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+<!-- ------------------------------------------------------------------------------------------- -->
+    </main>
+
+    <footer><%- include('../partials/footer'); %></footer>
+    <script src="/js/register.js"></script>
+</body>
+
+</html>
