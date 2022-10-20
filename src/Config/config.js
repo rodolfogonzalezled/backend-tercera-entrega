@@ -8,4 +8,6 @@ export const config = {
     secretSession: process.env.SECRET_SESSION || 'CoderSecret',
     superAdmin: process.env.SUPER_ADMIN,
     superAdminPassword: process.env.SUPER_ADMIN_PASSWORD,
+    awsAccessKey: process.env.AWS_ACCESS_KEY,
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 };

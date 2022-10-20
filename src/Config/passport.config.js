@@ -28,7 +28,7 @@ const initializePassport = () => {
                 phone,
                 role: "user",
                 cart: idCart,
-                photo: __dirname + '/' + req.file.path
+                photo: req.file.location
             })
             return done(null, user);
         } catch (error) {
