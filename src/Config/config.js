@@ -9,5 +9,7 @@ export const config = {
     superAdmin: process.env.SUPER_ADMIN,
     superAdminPassword: process.env.SUPER_ADMIN_PASSWORD,
     awsAccessKey: process.env.AWS_ACCESS_KEY,
-    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    emailNodemailer: process.env.EMAIL_NODEMAILER,
+    passwordNodemailer: process.env.PASSWORD_NODEMAILER
 };

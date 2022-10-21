@@ -101,7 +101,7 @@ router.post('/:id/order', async (req, res) => {
                 </li>`
             });
             html += '</ul>';
-            html += `<h3><b>Total a pagar: </b> ${precioTotal} </h3>`;
+            html += `<h3><b>Total a pagar: </b> $ ${precioTotal} </h3>`;
 
             const email = new mailingService();
             email.sendMail({

@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { config } from '../Config/config.js';
 
 export default class mailingService{
     constructor(){
@@ -6,8 +7,8 @@ export default class mailingService{
             service: 'gmail',
             port: 587,
             auth: {
-                user: 'rgonzalezled@gmail.com',
-                pass: 'rltasvhkakqrowyd'
+                user: config.emailNodemailer,
+                pass: config.passwordNodemailer
             }
         });
     }
