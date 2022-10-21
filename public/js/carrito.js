@@ -16,7 +16,7 @@ function borrarProductoCarrito(idCarrito, idProducto) {
             'Content-Type': 'application/json'
         }
     })
-        .then(() => {})
+        .then(() => window.location.reload())
         .catch(error => console.error('Error:', error));
 }
 
@@ -27,20 +27,23 @@ function vaciarCarrito(idCarrito) {
             'Content-Type': 'application/json'
         }
     })
-    .then(() => swal("Elementos borrados del carrito", '', "error", {button: false, timer: 1000}))
+    .then(() => {
+        swal("Elementos borrados del carrito", '', "error", {button: false, timer: 1000});
+        window.location.reload();
+    })
     .catch(error => console.error('Error:', error));
 }
 
-function finalizarCarrito() {
-    fetch(`/api/carrito/${idCarrito}`, {
-        method: 'DELETE',
+function finalizarCarrito(idCarrito) {
+    fetch(`/api/carrito/${idCarrito}/order`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }
     })
     .then(() => {
-        document.getElementById('btnBorrarCarrito').classList.add('disabled');
         swal("Compra finalizada", '', "success", {button: false, timer: 2000})
+        window.location.reload();
     })
     .catch(error => console.error('Error:', error));
 }

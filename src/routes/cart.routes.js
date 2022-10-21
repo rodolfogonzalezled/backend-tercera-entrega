@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { carts, products } from '../DAOs/index.js';
+import mailingService from "../services/mailing.js";
 
 const router = Router();
 
@@ -64,5 +65,63 @@ router.delete('/:id/productos/:id_prod?', async (req, res) => {
         res.json({ error: "Carrito no encontrado" });
     }
 });
+
+router.post('/:id/order', async (req, res) => {
+    let cart = await carts.getById(req.params.id);
+    if (cart) {
+        let productos = cart.productos ? cart.productos : [];
+
+        if (productos.length) {
+
+            let subject = `Nuevo pedido de ${req.session.user.name}, ${req.session.user.email}`;
+
+            let html = '<h1> Compra realizada </h1>';
+            html += '<ul>';
+
+            let precioTotal = 0;
+            productos.forEach(product => {
+                let subtotal = product.precio * product.cantidad;
+                precioTotal += subtotal;
+                html += `<li>
+                    <div style="text-align: center; justify-content: space-between; display: flex;">
+                        <div>
+                            <img style="border-radius: 8%; height: 5em; border: solid 1px" src='${product.foto}'>
+                        </div>
+                        <div style="flex-direction: column; text-align: left;">
+                            <div><b>Nombre:</b> ${product.nombre}</div>
+                            <div><b>Precio Unitario:</b>$ ${product.precio}</div>
+                        </div>
+                        <div style="text-align: left;">
+                            <div><b>Cantidad:</b> ${product.cantidad}</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div><b>Subtotal:</b>$ ${subtotal} </div>
+                        </div>
+                    </div>
+                </li>`
+            });
+            html += '</ul>';
+            html += `<h3><b>Total a pagar: </b> ${precioTotal} </h3>`;
+
+            const email = new mailingService();
+            email.sendMail({
+                from: 'Ecommerce Rodolfo',
+                to: req.session.user.email,
+                subject, 
+                html
+            });
+
+            productos.map(async product => {
+                await products.updateById(product._id, { stock: product.stock-product.cantidad });
+            });
+
+            await carts.updateById(req.params.id, { productos: [] });
+
+            res.sendStatus(200);
+        }
+    } else {
+        res.json({ error: "Carrito no encontrado" });
+    }
+})
 
 export default router;

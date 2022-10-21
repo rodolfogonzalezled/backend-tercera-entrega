@@ -11,7 +11,8 @@ router.post('/login',passport.authenticate('login',{failureRedirect:'/api/sessio
         email:req.user.email,
         id:req.user._id,
         role: req.user.role,
-        cart: req.user.cart
+        cart: req.user.cart,
+        photo: req.user.photo
     }
 
     res.send({status:"success", payload:req.user._id});

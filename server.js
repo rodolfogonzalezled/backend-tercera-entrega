@@ -1,3 +1,4 @@
+import __dirname from './dirname.js';
 import express from 'express';
 import { config } from './src/Config/config.js';
 import session from 'express-session';
@@ -8,7 +9,6 @@ import cartsRoutes from './src/routes/cart.routes.js';
 import sessionRoutes from './src/routes/session.routes.js';
 import passport from 'passport';
 import initializePassport from './src/Config/passport.config.js';
-import __dirname from './dirname.js'
 
 const app = express();
 
